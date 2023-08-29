@@ -10,19 +10,20 @@ exports.getAddProduct = (req, res, next) => {
     });
 }
 exports.postProduct = (req, res, next) => {
-    const product = new Product(req.body.title);
-    product.save();
+    const products = new Product(req.body.title);
+    products.save();
     res.redirect('/');
 }
 
 exports.getAllProducts = (req, res, next) => {
-    const products = Product.fetchAll();
-    res.render('shop', {
-        prods: products,
-        pageTitle: 'Shop',
-        path: '/',
-        hasProducts: products.length > 0,
-        activeShop: true,
-        productCSS: true
+    Product.fetchAll(products => {
+        res.render('shop', {
+            prods: products,
+            pageTitle: 'Shop',
+            path: '/',
+            hasProducts: products.length > 0,
+            activeShop: true,
+            productCSS: true
+        });
     });
 }
