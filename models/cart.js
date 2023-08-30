@@ -31,9 +31,9 @@ module.exports = class Cart {
             let updateProduct;
             if (existingProduct) {
                 updateProduct = { ...existingProduct };
-                updateProduct.quantity++
+                updateProduct.quantity = updateProduct.quantity +1;
                 cart.products = [...cart.products];
-                cart.products[existingProduct] = updateProduct;
+                cart.products[existingProductIndex] = updateProduct;
             } else {
         // increase the quantity if exists else adding the new product
                 updateProduct = { id: id, quantity: 1 };
