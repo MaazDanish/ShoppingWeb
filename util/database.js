@@ -1,9 +1,6 @@
-const mysql = require('mysql2');
+//  To use sequelize wo also need mysql2 third party package
+//  sequelize works on mysql2 in backend
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('FirstProject','root','maazdanish',{dialect:'mysql',host:'localhost'});
 
-const pool = mysql.createPool( {
-    host:'localhost',
-    user:'root',
-    database:'FirstProject',
-    password:'maazdanish'
-})
-module.exports = pool.promise();
+module.exports = sequelize;
